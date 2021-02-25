@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios from 'axios'
 
 class BaseService {
     constructor() {
@@ -19,7 +19,7 @@ class BaseService {
             if (token && response.status == 401) {
                 const {
                     data
-                } = await HTTP.post('/refresh-token');
+                } = await this.HTTP.post('/refresh-token');
                 localStorage.setItem('token', data.token);
             }
             return response;

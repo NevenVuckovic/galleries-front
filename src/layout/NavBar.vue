@@ -1,5 +1,5 @@
 <template>
-  <div class="mb-3">
+  <div class="mb-3" id="navbar">
     <h1>Gallery</h1>
 
     <b-navbar toggleable="lg" type="dark" variant="info">
@@ -18,7 +18,16 @@
 </template>
 
 <script>
-export default {};
+import { mapGetters, mapActions } from "vuex";
+export default {
+  name: "navbar",
+  computed: {
+    ...mapGetters("auth", ["isAuthenticated"])
+  },
+  methods: {
+    ...mapActions("auth", ["logout"])
+  }
+};
 </script>
 
 <style scoped>

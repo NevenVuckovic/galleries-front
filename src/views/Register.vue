@@ -15,7 +15,7 @@
       <div class="mb-3">
         <label for="last_name" class="form-label">Last Name</label>
         <input
-          v-model="userData.name"
+          v-model="userData.last_name"
           type="text"
           required
           class="form-control"
