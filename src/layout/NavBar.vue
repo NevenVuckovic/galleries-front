@@ -1,19 +1,24 @@
 <template>
-  <div class="mb-3" id="navbar">
-    <h1>Gallery</h1>
-
-    <b-navbar toggleable="lg" type="dark" variant="info">
-      <b-navbar-brand class="navbar-brand">All Galleries</b-navbar-brand>
-      <b-navbar-brand class="navbar-brand">My Galleries</b-navbar-brand>
-      <b-navbar-brand class="navbar-brand">Create New Gallery</b-navbar-brand>
-      <b-navbar-brand class="navbar-brand">
-        <router-link to="/register">Register</router-link>
-      </b-navbar-brand>
-      <b-navbar-brand class="navbar-brand">
-        <router-link to="/login">Login</router-link>
-      </b-navbar-brand>
-      <b-navbar-brand class="navbar-brand">Logout</b-navbar-brand>
-    </b-navbar>
+  <div id="nav-bar">
+    <h1>Galleries Project</h1>
+    <nav class="navbar navbar-expand-lg">
+      <router-link to="/" class="navbar-brand">All Galleries</router-link>
+      <div class="layout-item" v-if="isAuthenticated">
+        <div>
+          <router-link to="/galleries">My Galleries</router-link>|
+          <router-link to="/create">Create New Gallery</router-link>
+        </div>
+      </div>
+      <div class="nav-box ml-auto">
+        <template v-if="!isAuthenticated">
+          <router-link to="/register">Register</router-link>|
+          <router-link to="/login">Login</router-link>
+        </template>
+        <template v-else>
+          <a class="button" @click="logout">Logout</a>
+        </template>
+      </div>
+    </nav>
   </div>
 </template>
 
@@ -32,10 +37,45 @@ export default {
 
 <style scoped>
 h1 {
-  text-decoration: underline;
   color: rgb(255, 255, 255);
-  background-color: rgb(23, 184, 117);
+  background-color: rgba(1, 172, 100, 0.795);
   margin: auto;
   text-align: center;
+}
+body {
+  text-align: right;
+}
+#layout {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: rgb(52, 125, 189);
+  margin-bottom: 50px;
+}
+#layout a {
+  font-weight: bold;
+  color: #2c3e50;
+  text-decoration: none;
+}
+.layout-item {
+  align-self: center;
+}
+
+#nav-bar div {
+  justify-content: space-between;
+}
+nav {
+  background-color: teal;
+}
+
+.button {
+  background-color: darkslategrey; /* Green */
+
+  color: white;
+  padding: 5px 5px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
 }
 </style>
